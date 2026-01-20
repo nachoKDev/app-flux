@@ -32,4 +32,4 @@ spec:
           command:
             - sh
             - -c
-            - echo "Estoy actualziado"
+            - echo "Estoy actualziado v1"
