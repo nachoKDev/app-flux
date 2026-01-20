@@ -15,3 +15,21 @@ spec:
             - sh
             - -c
             - echo "Running migrations"
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: testlog
+  namespace: platform-dev
+spec:
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: migrationjob
+          image: public.ecr.aws/docker/library/busybox:unstable-musl
+          command:
+            - sh
+            - -c
+            - echo "Estoy actualziado"
