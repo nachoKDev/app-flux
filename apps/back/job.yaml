@@ -19,7 +19,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: testlog
+  name: testlog-v1
   namespace: platform-dev
 spec:
   backoffLimit: 2
