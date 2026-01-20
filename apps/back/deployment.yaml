@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platform-dev-back
+  namespace: platform-dev
+  labels:
+    app: platform-dev-back
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: platform-dev-back
+  template:
+    metadata:
+      labels:
+        app: platform-dev-back
+    spec:
+      containers:
+        - name: backend
+          image: backend:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+          env:
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-back
+                  key: service

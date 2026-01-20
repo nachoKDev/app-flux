@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: platform-dev-front
+  namespace: platform-dev
+  labels:
+    app: platform-dev-front
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: platform-dev-front
+  template:
+    metadata:
+      labels:
+        app: platform-dev-front
+    spec:
+      containers:
+        - name: front
+          image: frontend:dev
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5000
+          env:
+            - name: SERVICE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: configmap-front
+                  key: service

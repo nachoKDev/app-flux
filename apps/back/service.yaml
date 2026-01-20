@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend
+  namespace: platform-dev
+spec:
+  selector:
+    app: platform-dev-back
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
