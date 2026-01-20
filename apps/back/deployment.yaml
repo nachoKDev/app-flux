@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: backend:dev
+          image: ghcr.io/<usuario>/backend:latest
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
